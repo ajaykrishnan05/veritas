@@ -5,7 +5,7 @@ Promise: *"PayGuard turns every invoice into an explainable approve, review, or 
 
 This is a **four-hour hackathon MVP**. Prioritize one reliable, complete vertical slice over breadth. Make no production-readiness claims for anything unsupported.
 
-> Status: repository was empty at kickoff (greenfield). Commands below are the **target** commands; update this file if the scaffold differs.
+> Status: greenfield build, implemented. Commands below are current. `db:seed` requires `DEMO_PASSWORD`; `.env` is not auto-loaded.
 
 ## Scope (exactly three core features)
 1. Invoice intake + structured extraction (PDF/PNG/JPG/JPEG, drag-and-drop).
@@ -72,8 +72,8 @@ Run typecheck, lint, tests and build after each major phase.
 |---|---|---|
 | Upload, view extraction/findings | yes | yes |
 | View all invoices / all audit records | own + shared lists as spec'd | yes |
-| Approve **low** risk | yes | yes |
-| Review/hold **medium** risk | yes | yes |
+| Approve / hold / reject-as-duplicate **low & medium** risk | yes | yes |
+| Reject – suspected fraud | no | yes |
 | Resolve **high** risk (approve/hold/reject) | **no (403)** | yes |
 | Export audit CSV | no | yes |
 Hold and reject require a non-empty note. Every decision stores authenticated reviewer + timestamp.

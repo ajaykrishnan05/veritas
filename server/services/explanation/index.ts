@@ -30,7 +30,7 @@ export function deterministicExplanation(risk: RiskResult, extraction: InvoiceEx
       ? 'No significant discrepancies were found against vendor and payment history. Safe to approve.'
       : risk.level === 'medium'
         ? `Risk score ${risk.score}: ${scored.length} discrepanc${scored.length === 1 ? 'y' : 'ies'} need review before approval.`
-        : `High risk (score ${risk.score}): payment should be held for verification.`;
+        : `Score ${risk.score}: ${scored.length} discrepanc${scored.length === 1 ? 'y' : 'ies'} need verification before any payment is released.`;
   const reasons = (scored.length ? scored : risk.triggered_rules).slice(0, 4).map((f) => f.evidence);
   if (reasons.length === 0) reasons.push('Vendor, bank details, tax rate, prices and history are consistent with the records on file.');
   const missing = [...new Set(scored.map((f) => VERIFICATION_BY_RULE[f.rule_name]).filter(Boolean))].slice(0, 6);
